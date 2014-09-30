@@ -1,0 +1,147 @@
+{{#emptyResourceCheck}}
+    <div class="panel panel-white">
+        <div class="panel-heading">
+            <h4 id="url{{uniqueId}}" class="panel-title">
+                <span class="parent">{{parentUrl}}</span>{{relativeUri}}
+
+                <span class="methods">
+                    {{#methods}}
+                        <a href="#url{{../uniqueId}}_{{method}}">
+                            <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
+                        </a>
+                    {{/methods}}
+                </span>
+            </h4>
+        </div>
+        <div class="panel-body">
+            {{#if parentUrl}}
+                {{#if description}}
+                    <div class="resource-description">{{md description}}</div>
+                {{/if}}
+            {{/if}}
+
+            <div class="list-group">
+                {{#methods}}
+                    <div class="list-group-item">
+                        <div class="panel-white">
+                            <div id="url{{../uniqueId}}_{{method}}" class="url-heading">
+                                <span class="badge badge_{{method}}">{{method}}{{lock securedBy}}</span>
+                                <a href="#url{{../uniqueId}}">
+                                    <span class="parent">{{../parentUrl}}</span>{{../relativeUri}}
+                                </a>
+                            </div>
+                            <div class="panel-body">
+                                {{#if description}}
+                                    <div class="alert alert-info">{{md description}}</div>
+                                {{/if}}
+                                <div class="url-content">
+                                    <div class="url-content-title">Request</div>
+                                    {{#ifRequest ../allUriParameters this}}
+                                        <div class="url-pane" id="url{{../uniqueId}}_{{method}}_request">
+                                            {{#if ../allUriParameters}}
+                                                <div class="heading-3">URI Parameters</div>
+                                                <ul>
+                                                    {{#each ../../allUriParameters}}
+                                                        {{> item}}
+                                                    {{/each}}
+                                                </ul>
+                                            {{/if}}
+
+                                            {{#if headers}}
+                                                <div class="heading-3">Headers</div>
+                                                <ul>
+                                                    {{#each headers}}
+                                                        {{> item}}
+                                                    {{/each}}
+                                                </ul>
+                                            {{/if}}
+
+                                            {{#if queryParameters}}
+                                                <div class="heading-3">Query Parameters</div>
+                                                <ul>
+                                                    {{#each queryParameters}}
+                                                        {{> item}}
+                                                    {{/each}}
+                                                </ul>
+                                            {{/if}}
+
+                                            {{#if body}}
+                                                <div class="heading-3">Body</div>
+                                                {{#each body}}
+                                                    <p><strong>Type: {{@key}}</strong></p>
+                                                    {{#if formParameters}}
+                                                        <strong>Form Parameters</strong>
+                                                        <ul>
+                                                            {{#each formParameters}}
+                                                                {{> item}}
+                                                            {{/each}}
+                                                        </ul>
+                                                    {{/if}}
+
+                                                    {{#if this.schema}}
+                                                        <p><strong>Schema</strong>:</p>
+                                                        <pre><code>{{this.schema}}</code></pre>
+                                                    {{/if}}
+
+                                                    {{#if this.example}}
+                                                        <p><strong>Example</strong>:</p>
+                                                        <pre><code>{{this.example}}</code></pre>
+                                                    {{/if}}
+                                                {{/each}}
+                                            {{/if}}
+                                        </div>
+                                    {{/ifRequest}}
+                                </div>
+                                {{#if responses}}
+                                    <div class="url-content">
+                                        <div class="url-content-title">Response</div>
+                                        <div class="url-pane" id="url{{../uniqueId}}_{{method}}_response">
+                                            {{#each responses}}
+                                                <div class="heading-2">
+                                                    HTTP status code 
+                                                    <a href="http://httpstatus.es/{{@key}}" target="_blank">{{@key}}</a>
+                                                </div>
+                                                {{md this.description}}
+                                                <div class="url-pane">
+                                                    {{#if this.headers}}
+                                                        <div class="heading-3">Headers</div>
+                                                        <ul>
+                                                            {{#each this.headers}}
+                                                                {{> item}}
+                                                            {{/each}}
+                                                        </ul>
+                                                    {{/if}}
+
+                                                    {{#if this.body}}
+                                                        <div class="heading-3">Body</div>
+                                                        {{#each this.body}}
+                                                            <p><strong>Type: {{@key}}</strong></p>
+
+                                                            {{#if this.schema}}
+                                                                <p><strong>Schema</strong>:</p>
+                                                                <pre><code>{{this.schema}}</code></pre>
+                                                            {{/if}}
+
+                                                            {{#if this.example}}
+                                                                <p><strong>Example</strong>:</p>
+                                                                <pre><code>{{this.example}}</code></pre>
+                                                            {{/if}}
+                                                        {{/each}}
+                                                    {{/if}}
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                {{/methods}}
+            </div>
+        </div>
+    </div>
+{{/emptyResourceCheck}}
+
+{{#resources}}
+    {{> resource}}
+{{/resources}}

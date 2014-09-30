@@ -1,0 +1,328 @@
+<html>
+<head>
+    <title>{{title}} API documentation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="{{urlPrefix}}/highlight.min.css">
+    <script type="text/javascript" src="{{urlPrefix}}/jquery.min.js"></script>
+    <script type="text/javascript" src="{{urlPrefix}}/highlight.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+
+    <style>
+        html {
+            font-family: sans-serif;
+        }
+        body {
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #333;
+            background-color: #fff
+        }
+        pre {
+            display: block;
+            padding: 9.5px;
+            margin: 0 0 10px;
+            font-size: 13px;
+            line-height: 1.42857143;
+            color: #333;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            white-space: pre;
+            overflow: auto;
+        }
+        pre code {
+            padding: 0;
+            font-size: inherit;
+            color: inherit;
+            white-space: pre-wrap;
+            background-color: transparent;
+        }
+        code, kbd, pre, samp {
+            font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        }
+        ul, ol {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        b, strong {
+            font-weight: 700;
+        }
+        p {
+            margin: 0 0 10px;
+        }
+        a {
+            color: #428bca;
+            text-decoration: none;
+            background: 0 0;
+        }
+        .hljs {
+            background: transparent;
+        }
+        .container {
+            width: 970px;
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .row {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+        .page-header {
+            padding-bottom: 9px;
+            margin: 40px 0 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .parent {
+            color: #999;
+        }
+        .panel {
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+        .panel-default {
+            border: 1px solid #ddd;
+        }
+        .panel-default .panel-heading {
+            color: #333;
+            background-color: #f5f5f5;
+            border-color: #ddd;
+        }
+        .panel-heading {
+            padding: 10px 15px;
+            border-bottom: 1px solid transparent;
+        }
+        .panel-title {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 16px;
+            color: inherit;
+        }
+        .panel-body {
+            padding: 15px;
+        }
+        .list-group {
+            margin-bottom: 20px;
+            padding-left: 0;
+        }
+        .list-group, .panel-group {
+            margin-bottom: 0;
+        }
+        .list-group-item {
+            position: relative;
+            display: block;
+            padding: 10px 15px;
+            margin-bottom: -1px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+        .panel-group {
+            margin-bottom: 20px;
+        }
+        .panel-group .panel-white {
+            border-bottom: 1px solid #F5F5F5;
+        }
+        .panel-group .panel {
+            margin-bottom: 0;
+            overflow: hidden;
+        }
+        .panel-group .panel-heading {
+            border-bottom: 0;
+        }
+        .list-group-item .badge {
+            float: none;
+            margin-right: 6px;
+        }
+        .panel-white .panel-heading {
+            background: white;
+            border-bottom: 1px solid #ddd;
+        }
+        .panel-heading {
+            padding: 10px 15px;
+            border-bottom: 1px solid transparent;
+        }
+        .panel-title .methods {
+            float: right;
+        }
+        .badge {
+            text-transform: uppercase;
+            width: 60px;
+            display: inline-block;
+            padding: 3px 7px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #fff;
+            line-height: 1;
+            vertical-align: baseline;
+            text-align: center;
+            background-color: #999;
+        }
+        .badge_get {
+            background-color: #0b88b9;
+        }
+        .badge_post {
+            background-color: #22b9a2;
+        }
+        .badge_put {
+            background-color: #5483ec;
+        }
+        .badge_delete {
+            background-color: #e9505f;
+        }
+        .badge_patch {
+            background-color: #17c4f6;
+        }
+        .badge_connect {
+            background-color: #f39e1a;
+        }
+        .badge_options {
+            background-color: #31d08a;
+        }
+        .badge_trace {
+            background-color: #98b805;
+        }
+        .badge_head {
+            background-color: #a652c3;
+        }
+        .glyphicon {
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1;
+        }
+        .list-group, .panel-group {
+            margin-bottom: 0;
+        }
+        .panel-group .panel+.panel-white {
+            margin-top: 0;
+        }
+        .panel-group .panel-white {
+            border-bottom: 1px solid #F5F5F5;
+            border-radius: 0;
+        }
+        .panel-white:last-child {
+            border-bottom-color: white;
+        }
+        .panel-white .panel-heading {
+            background: white;
+            border-bottom: 1px solid #ddd;
+        }
+        .alert-info {
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+            color: #31708f;
+        }
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+        }
+        .alert p, .alert ul {
+            margin-bottom: 0;
+        }
+        .url-pane {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+        }
+        .url-content {
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .url-content-title {
+            color: #428bca;
+            font-size: 15px;
+            border-bottom: 1px solid #ddd;
+            padding: 4px 10px;
+        }
+        .url-heading {
+            border-bottom: 1px solid #ddd;
+            padding-left: 15px;
+            padding-bottom: 10px;
+        }
+        .url-heading a {
+            color: inherit;
+        }
+        .top-resource-description {
+            border-bottom: 1px solid #ddd;
+            background: #fcfcfc;
+            padding: 15px 15px 0 15px;
+            margin: -15px -15px 10px -15px;
+        }
+        .resource-description {
+            border-bottom: 1px solid #fcfcfc;
+            background: #fcfcfc;
+            padding: 15px 15px 0 15px;
+            margin: -15px -15px 10px -15px;
+        }
+        .list-group .badge {
+            float: left;
+            margin-right: 15px;
+        }
+        .heading-1{
+            font-size: 1.2em;
+            padding-bottom: 4px;
+            font-weight: bold;
+        }
+        .heading-2{
+            font-size: 1.1em;
+            padding-bottom: 2px;
+            font-weight: bold;
+        }
+        .heading-3{
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .heading-4, .heading-5{
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .url-pane .heading-2{
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>{{title}} API documentation{{#if version}} <small>version {{version}}</small>{{/if}}</h1>
+                <p>{{baseUri}}</p>
+
+                {{#documentation}}
+                    <h2 id="{{uniqueId}}"><a href="#{{uniqueId}}">{{title}}</a></h2>
+                    {{md content}}
+                {{/documentation}}
+            </div>
+
+            {{#resources}}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 id="{{uniqueId}}" class="panel-title">{{#if displayName}}{{displayName}}{{/if}}{{#unless displayName}}{{relativeUri}}{{/unless}}</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        {{#if description}}
+                            <div class="top-resource-description">
+                                {{md description}}
+                            </div>
+                        {{/if}}
+
+                        <div class="panel-group">{{> resource}}</div>
+                    </div>
+                </div>
+            {{/resources}}
+        </div>
+    </div>
+</body>
+</html>
