@@ -15,7 +15,7 @@ wkhtmltopdf.command = config.wkhtmltopdfCommand || wkhtmltopdf.command;
 exports.generatePdf = function(req, res, next) {
   var uri;
   uri = url.parse(req.url).pathname;
-  if (uri.toLowerCase() === ("" + config.apiPrefix + "/generatepdf") && req.method === 'POST') {
+  if (uri.toLowerCase() === ("/raml2pdf") && req.method === 'POST') {
     if (req.body.raml == null) {
       return next(new Error('No RAML Specification defined'));
     }

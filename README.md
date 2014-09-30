@@ -9,7 +9,6 @@ You can modify the `congfig.js` file on your environment
 ```javascript
 exports.ipAddress = 'http://127.0.0.1';
 exports.port = 8000;
-exports.apiPrefix = '/framework/v1';
 exports.publicDirname = "" + __dirname + "/public";
 //The resource files floder that render HTML.
 
@@ -18,7 +17,8 @@ exports.resourceTemplate = "" + __dirname + "/templates/resource.handlebars";
 exports.itemTemplate = "" + __dirname + "/templates/item.handlebars";
 //HTML template.
 
-exports.wkhtmltopdfCommand = 'C:/wkhtmltopdf/bin/wkhtmltopdf.exe'
+//If you Windows user, you maybe change like this.
+//exports.wkhtmltopdfCommand = 'C:/wkhtmltopdf/bin/wkhtmltopdf.exe'
 //wkhtml2pdf command line tool path.
 //Default is 'wkhtmltopdf', you could not specify it if in linux.
 ```
@@ -32,15 +32,17 @@ Because of various platform specific, the recommendatory versions are follows(mo
 -	On OS X, use version 0.10.
 -	On Ubuntu, I use version 0.9.9 32 or 64 bit from that page. Don't try to use the version installed via apt-get because it is missing features and requires and X server. Follow this guide to make sure you have all the necessary dependencies.
 
-After installation, be sure `wkhtmltopdf` command line tool is in your system PATH. If you don't want to do this for some reason, you can change the `exports.wkhtmltopdfCommand` property to the `wkhtmltopdf` path in 'config.js' file.
+After installation, be sure `wkhtmltopdf` command line tool is in your system PATH. If you don't want to do this for some reason, you can change the `exports.wkhtmltopdfCommand` property to the `wkhtmltopdf` path in `config.js` file.
 
 ##Usage
 
 By default configuration, the api access address:
 
-**POST**   http://127.0.0.1:8000/framework/v1/generatepdf
+**POST**  	 http://127.0.0.1:8000/raml2pdf
 
 Request Data:
+
+>**Notice**   The raml must be formatted, yuo can see `example.json`
 
 ```json
 {
@@ -50,9 +52,9 @@ Request Data:
 
 Response Data:
 
--	200
+-	**200**
 
--	500  
+-	**500**
 	
 	```json
 	{
@@ -74,3 +76,12 @@ Response Data:
 	}
 	```
 	PDF generation fails.
+
+##Example
+
+You can find example RAML, Request JSON, PDF and Image in examples folder.
+![PDF example]()
+
+##License
+
+MIT
