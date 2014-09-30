@@ -80,7 +80,7 @@ Response Data:
 ##Example
 
 You can find example RAML, Request JSON, PDF and Image in examples folder.
-![PDF example]()
+![PDF example](https://raw.githubusercontent.com/our-bts/raml2pdf/master/examples/example.png)
 
 ##License
 
