@@ -1,6 +1,6 @@
 #RAML to PDF
 
-RAML to PDF documentation generator, written for Node.js. Build on [raml2html](https://github.com/kevinrenskers/raml2html) and [node-wkhtmltopdf](https://github.com/devongovett/node-wkhtmltopdf).
+RAML to PDF documentation generator, build on [raml2html](https://github.com/kevinrenskers/raml2html) and [node-wkhtmltopdf](https://github.com/devongovett/node-wkhtmltopdf).
 
 ##Configuration
 
@@ -17,9 +17,9 @@ exports.resourceTemplate = "" + __dirname + "/templates/resource.handlebars";
 exports.itemTemplate = "" + __dirname + "/templates/item.handlebars";
 //HTML template.
 
+//wkhtml2pdf command line tool path.
 //If you Windows user, you maybe change like this.
 //exports.wkhtmltopdfCommand = 'C:/wkhtmltopdf/bin/wkhtmltopdf.exe'
-//wkhtml2pdf command line tool path.
 //Default is 'wkhtmltopdf', you could not specify it if in linux.
 ```
 
@@ -80,6 +80,7 @@ Response Data:
 ##Example
 
 You can find example RAML, Request JSON, PDF and Image in examples folder.
+
 ![PDF example](https://raw.githubusercontent.com/our-bts/raml2pdf/master/examples/example.png)
 
 ##License
